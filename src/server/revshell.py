@@ -12,7 +12,7 @@ def receive(client):
         recvlen = len(data)
         out += data.decode()
 
-        if (recvlen < 4096):
+        if not data:
             break
 
     print(out)
