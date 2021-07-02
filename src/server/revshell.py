@@ -1,16 +1,19 @@
 import socket
 import threading
+import select
 import os
+import time
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 def receive(client):
     out = ""
-    while True:
-        data = client.recv(4096)
-        out += data.decode()
-
-        if not data:
+    while 1:
+        ready = select.select([client], [], [], 0.5)
+        if (ready[0]):
+            data = client.recv(4096)
+            out += data.decode()
+        else:
             break
 
     print(out)
@@ -43,5 +46,4 @@ while True:
         client.send(request.encode())
         t = threading.Thread(target=receive, args=(client,))
         t.start()
-
-
+        time.sleep(1)
