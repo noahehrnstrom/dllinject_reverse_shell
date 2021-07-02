@@ -6,9 +6,9 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 def receive(client):
     out = ""
-    recvlen = 1
-    while recvlen > 0:
-        data = client.recv(4096)
+    recvlen = 0
+    while True:
+        data = client.recv()
         recvlen = len(data)
         out += data.decode()
 
