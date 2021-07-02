@@ -8,7 +8,7 @@ def receive(client):
     out = ""
     recvlen = 0
     while True:
-        data = client.recv()
+        data = client.recv(4096)
         recvlen = len(data)
         out += data.decode()
 
