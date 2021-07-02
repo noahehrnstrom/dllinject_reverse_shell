@@ -58,7 +58,7 @@ int main(int argc, const char* argv[])
 		{
 			GetModuleBaseName(curProcess, hMod[0], szProcessName,
 				sizeof(szProcessName) / sizeof(WCHAR));
-			if (wcscmp(szProcessName, L"ApplicationFrameHost.exe") == 0)
+			if (wcscmp(szProcessName, L"RuntimeBroker.exe") == 0)
 			{
 				hProcess = curProcess;
 				addrProcess = (DWORD)hMod[0];
