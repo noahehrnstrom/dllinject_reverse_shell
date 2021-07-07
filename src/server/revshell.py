@@ -9,8 +9,8 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 def receive(client):
     out = ""
     while 1:
-        ready = select.select([client], [], [], 0.5)
-        if (ready[0]):
+        connection = select.select([client], [], [], 0.5)
+        if (connection[0]):
             data = client.recv(4096)
             out += data.decode()
         else:
